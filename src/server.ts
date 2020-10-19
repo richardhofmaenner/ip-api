@@ -2,7 +2,7 @@ import express, {Request, Response} from 'express'
 
 // @ts-ignore
 const PORT: number = process.env.PORT | 3000
-const app = express()
+export const app = express()
 app.set('trust proxy', true)
 
 app.get('/', (req: Request, res: Response) => {
@@ -13,9 +13,9 @@ app.get('/', (req: Request, res: Response) => {
     ipAddress = req.connection.remoteAddress
   }
 
-  res.send({ipAddress: ipAddress})
+  res.contentType('application/json').json({ipAddress: ipAddress})
 })
 
-app.listen(PORT,() => {
+export const server = app.listen(PORT,() => {
   console.log(`Server is listening on port ${PORT}`)
 })
