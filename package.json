@@ -4,7 +4,7 @@
   "description": "",
   "main": "build/server.js",
   "scripts": {
-    "build-watch": "",
+    "build-watch": "tsc --watch",
     "build": "tsc --watch",
     "dev": "nodemon build/server.js",
     "start": "node build/server.js"

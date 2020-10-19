@@ -3,7 +3,6 @@ services:
   ip-api:
     build:
       context: ./
-      dockerfile: .dockerfile
+      dockerfile: Dockerfile
     ports:
       - 9030:3000
-    command: "npm start"
