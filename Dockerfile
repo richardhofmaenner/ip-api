@@ -4,4 +4,6 @@ WORKDIR /home/node/app
 
 COPY . /home/node/app
 
-RUN npm install
+RUN yarn install --prod
+
+CMD ["node", "build/server.js"]
