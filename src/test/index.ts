@@ -14,7 +14,9 @@ test('Server is running', async t => {
 test('Route returns correct IP address with default Header', async t => {
   const res: Response = await got.get('http://localhost:3000/')
   t.is(res.headers["content-type"], 'application/json; charset=utf-8')
-  const body: any = JSON.parse(res.body)
+  if (typeof res.body === "string") {
+    const body: any = JSON.parse(res.body)
+  }
   t.is(body.ipAddress, '::ffff:127.0.0.1')
 })
 
