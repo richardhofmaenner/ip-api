@@ -1,8 +1,11 @@
 import express, {Request, Response} from 'express'
+import bodyParser from "body-parser";
 
 // @ts-ignore
 const PORT: number = process.env.PORT | 3000
 export const app = express()
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
 app.set('trust proxy', true)
 
 app.get('/', (req: Request, res: Response) => {
