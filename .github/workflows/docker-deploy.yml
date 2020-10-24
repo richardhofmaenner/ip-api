@@ -22,7 +22,7 @@ jobs:
       - name: Install Dependencies
         run: yarn install
         
-      - name: Build Code
+      - name: Build Application
         run: yarn build
 
   test:
@@ -52,10 +52,10 @@ jobs:
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
-      - name: Log into GitHub Container Registry
+      - name: Log into Docker Hub Registry
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-      - name: Push image to GitHub Container Registry
+      - name: Push image to Docker Hub Registry
         run: |
           IMAGE_ID=richardhofmaenner/$IMAGE_NAME
 
@@ -79,6 +79,6 @@ jobs:
           docker push $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:latest
           
-      - name: Log out of docker
+      - name: Log out of Docker Hub
         run: docker logout
           
