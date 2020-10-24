@@ -16,8 +16,8 @@ test('Route returns correct IP address with default Header', async t => {
   t.is(res.headers["content-type"], 'application/json; charset=utf-8')
   if (typeof res.body === "string") {
     const body: any = JSON.parse(res.body)
+    t.is(body.ipAddress, '::ffff:127.0.0.1')
   }
-  t.is(body.ipAddress, '::ffff:127.0.0.1')
 })
 
 test.after.always(async () => {
