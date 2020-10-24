@@ -8,23 +8,7 @@ on:
 env:
   IMAGE_NAME: ip-api
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.2
-        with:
-          node-version: 15
-          
-      - name: Install Dependencies
-        run: yarn install
-        
-      - name: Build Application
-        run: yarn build
-
+jobs:      
   test:
     runs-on: ubuntu-latest
 
@@ -42,11 +26,24 @@ jobs:
           
   push:
 
-    needs: [build, test]
+    needs: [test]
 
     runs-on: ubuntu-latest
     
     steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: 15
+          
+      - name: Install Dependencies
+        run: yarn install
+        
+      - name: Build Application
+        run: yarn build
+
       - uses: actions/checkout@v2
 
       - name: Build image
