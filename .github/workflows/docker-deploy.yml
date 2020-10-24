@@ -3,6 +3,7 @@ name: Docker
 on:
   workflow_dispatch:
   release:
+    types: [released]
 
 env:
   IMAGE_NAME: ip-api
