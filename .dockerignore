@@ -2,3 +2,5 @@ node_modules
 .idea
 src
 tsconfig.json
+README.md
+.github
